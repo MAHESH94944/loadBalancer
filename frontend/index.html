@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Load Balancer Simulation</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Link to the CSS file -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js for visualizations -->
+  </head>
+  <body>
+    <header>
+      <h1>Load Balancer Simulation</h1>
+    </header>
+
+    <main>
+      <section class="task-input">
+        <input type="text" id="taskInput" placeholder="Enter task name" />
+        <button id="assignButton">Assign Task</button>
+      </section>
+
+      <section class="server-loads">
+        <h2>Server Loads:</h2>
+        <ul id="serverLoads"></ul>
+      </section>
+
+      <section class="task-history">
+        <h2>Task History:</h2>
+        <ul id="taskHistory"></ul>
+      </section>
+
+      <section class="algorithms">
+        <h2>Algorithms Used</h2>
+        <button id="toggleAlgorithms">Show Algorithms</button>
+        <div id="algorithmDetails" style="display: none">
+          <h3>Las Vegas Algorithm</h3>
+          <p>
+            The Las Vegas algorithm guarantees correct results by randomly
+            selecting servers and assigning tasks to the least loaded one. It
+            runs multiple attempts to ensure it finds a server that meets the
+            load condition, ensuring optimal task assignment.
+          </p>
+          <p>
+            <strong>Example:</strong> If there are three servers with task
+            counts of 1, 0, and 3 respectively, the algorithm may randomly check
+            the server loads multiple times. It will assign a task to the server
+            with 0 tasks, guaranteeing efficient load distribution.
+          </p>
+
+          <h3>Monte Carlo Algorithm</h3>
+          <p>
+            The Monte Carlo algorithm uses randomness to select servers and
+            assigns tasks based on which server has the lowest load. It runs a
+            number of iterations to enhance the probability of making the
+            optimal choice.
+          </p>
+          <p>
+            <strong>Example:</strong> Given three servers with loads of 2, 3,
+            and 1, the algorithm randomly samples servers 10 times, comparing
+            their loads. It assigns the task to the server with 1 load if it is
+            sampled during its iterations.
+          </p>
+        </div>
+      </section>
+
+      <section class="charts">
+        <h2>Server Load Visualization</h2>
+        <canvas id="loadChart"></canvas>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Load Balancer Project</p>
+    </footer>
+  </body>
+</html>
